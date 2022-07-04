@@ -1,12 +1,30 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core'
 import useStyles from './NavbarStyles'
 import gabosl from '../../images/gabo_perfect.png'
+import * as ActionType from '../../constants/ActionTypes'
 
 export default function Navbar() {
+    const dispatch = useDispatch();
     const classes = useStyles();
+    const history = useHistory();
+    const location = useLocation();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    useEffect(() => {
+        const token = user?.token;
+        if (token) {
+          const decodedToken = decode(token);
+          if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+        }
+        setUser(JSON.parse(localStorage.getItem('profile')));
+      }, [location]);
+    const logout = () => {
+        dispatch({ type: ActionType.LOGOUT });
+        history.push('/auth');
+        setUser(null);
+    };
   return (
     <>
         <AppBar className={classes.appBar} position="static" color="inherit">

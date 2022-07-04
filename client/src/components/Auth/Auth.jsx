@@ -2,18 +2,23 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import { useHistory } from 'react-router-dom'
 import { GoogleLogin } from 'react-google-login'
 import useStyles from './AuthStyles'
 import Input from './Input'
 import Icon from './Icon'
+import { signin, signup } from '../../actions/AuthAction'
+
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
 export default function Auth() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const classes = useStyles();
+    const [form, setForm] = useState(initialState);
     const [isSignup, setIsSignup] = useState(false);
     const handleSubmit = (e) => {
         e.preventDefault();
-    
         if (isSignup) {
           dispatch(signup(form, history));
         } else {
