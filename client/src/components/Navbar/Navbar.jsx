@@ -5,6 +5,7 @@ import { AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core'
 import useStyles from './NavbarStyles'
 import gabosl from '../../images/gabo_perfect.png'
 import * as ActionType from '../../constants/ActionTypes'
+import decode from 'jwt-decode'
 
 export default function Navbar() {
     const dispatch = useDispatch();
@@ -12,6 +13,11 @@ export default function Navbar() {
     const history = useHistory();
     const location = useLocation();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const logout = () => {
+        dispatch({ type: ActionType.LOGOUT });
+        history.push('/auth');
+        setUser(null);
+    };
     useEffect(() => {
         const token = user?.token;
         if (token) {
@@ -20,11 +26,6 @@ export default function Navbar() {
         }
         setUser(JSON.parse(localStorage.getItem('profile')));
       }, [location]);
-    const logout = () => {
-        dispatch({ type: ActionType.LOGOUT });
-        history.push('/auth');
-        setUser(null);
-    };
   return (
     <>
         <AppBar className={classes.appBar} position="static" color="inherit">
