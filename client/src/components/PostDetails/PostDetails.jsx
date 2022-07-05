@@ -3,12 +3,11 @@ import { Paper, Typography, CircularProgress, Divider } from '@material-ui/core/
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useParams, useHistory, Link } from 'react-router-dom';
-
 import { getPost, getPostsBySearch } from '../../actions/PostAction';
 import CommentSection from './CommentSection';
 import useStyles from './PostDetailsStyles';
 
-const Post = () => {
+export default function PostDetails = () => {
   const { post, posts, isLoading } = useSelector((state) => state.posts);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -43,7 +42,8 @@ const Post = () => {
       <div className={classes.card}>
         <div className={classes.section}>
           <Typography variant="h3" component="h2">{post.title}</Typography>
-          <Typography gutterBottom variant="h6" color="textSecondary" component="h2">{post.tags.map((tag) => (
+          <Typography gutterBottom variant="h6" color="textSecondary" component="h2">
+          {post.tags.map((tag) => (
             <Link to={`/tags/${tag}`} style={{ textDecoration: 'none', color: '#3f51b5' }}>
               {` #${tag} `}
             </Link>
@@ -87,5 +87,3 @@ const Post = () => {
     </Paper>
   );
 };
-
-export default Post;
