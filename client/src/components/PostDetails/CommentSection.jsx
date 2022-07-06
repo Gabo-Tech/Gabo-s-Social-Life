@@ -15,10 +15,8 @@ export default function CommentSection({ post }){
 
   const handleComment = async () => {
     const newComments = await dispatch(commentPost(`${user?.result?.name}: ${comment}`, post._id));
-
     setComment('');
     setComments(newComments);
-
     commentsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -27,10 +25,10 @@ export default function CommentSection({ post }){
       <div className={classes.commentsOuterContainer}>
         <div className={classes.commentsInnerContainer}>
           <Typography gutterBottom variant="h6">Comments</Typography>
-          {comments?.map((c, i) => (
+          {comments?.map((comment, i) => (
             <Typography key={i} gutterBottom variant="subtitle1">
-              <strong>{c.split(': ')[0]}</strong>
-              {c.split(':')[1]}
+              <strong>{comment.split(': ')[0]}</strong>
+              {comment.split(':')[1]}
             </Typography>
           ))}
           <div ref={commentsRef} />

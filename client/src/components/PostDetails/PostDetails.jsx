@@ -7,7 +7,7 @@ import { getPost, getPostsBySearch } from '../../actions/PostAction';
 import CommentSection from './CommentSection';
 import useStyles from './PostDetailsStyles';
 
-export default function PostDetails = () => {
+export default function PostDetails(){
   const { post, posts, isLoading } = useSelector((state) => state.posts);
   const dispatch = useDispatch();
   const history = useHistory();

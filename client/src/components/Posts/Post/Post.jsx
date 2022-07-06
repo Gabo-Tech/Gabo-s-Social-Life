@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core/';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -14,6 +14,17 @@ export default function Post({ post, setCurrentId }){
   const history = useHistory();
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem('profile'));
+  const userId = user?.result.googleId || user?.result?._id;
+  const [likes, setLikes] = useState(post?.likes);
+  const hasLikedPost = post.likes.find((like) => like === userId);
+  const handleLike = async () => {
+    dispatch(likePost(post._id));
+    if (hasLikedPost) {
+      setLikes(post.likes.filter((id) => id !== userId));
+    } else {
+      setLikes([...post.likes, userId]);
+    }
+  };
   const Likes = () => {
     if (likes.length > 0) {
       return likes.find((like) => like === userId)
