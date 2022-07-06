@@ -22,6 +22,17 @@ export const getPosts = (page) => async (dispatch) => {
   }
 };
 
+export const getPostsByCreator = (name) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    const { data: { data } } = await api.fetchPostsByCreator(name);
+    dispatch({ type: FETCH_BY_CREATOR, payload: { data } });
+    dispatch({ type: END_LOADING });
+  } catch (err) {
+    console.error("THIS IS THE GETPOSTSBYCREATOR ERROR: ",err.message);
+  }
+};
+
 export const getPostsBySearch = (searchQuery) => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });

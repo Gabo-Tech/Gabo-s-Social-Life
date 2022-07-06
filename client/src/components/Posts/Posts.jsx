@@ -8,7 +8,7 @@ import useStyles from './PostsStyles';
 export default function Posts({ setCurrentId }){
   const { posts, isLoading } = useSelector((state) => state.posts);
   const classes = useStyles();
-  if (!posts.length && !isLoading) return 'No posts';
+  if (!posts && !isLoading) return 'No posts';
   return (
     isLoading ? <CircularProgress /> : (
       <Grid className={classes.container} container alignItems="stretch" spacing={3}>

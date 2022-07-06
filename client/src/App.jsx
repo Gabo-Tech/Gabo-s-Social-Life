@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
 import PostDetails from './components/PostDetails/PostDetails';
+import CreatorOrTag from './components/CreatorOrTag/CreatorOrTag';
 
 export default function App() {
   const user = JSON.parse(localStorage.getItem('profile'));

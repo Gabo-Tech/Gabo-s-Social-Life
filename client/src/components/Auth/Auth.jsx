@@ -7,6 +7,8 @@ import { GoogleLogin } from 'react-google-login'
 import useStyles from './AuthStyles'
 import Input from './Input'
 import Icon from './Icon'
+import env from "react-dotenv"
+import { AUTH } from '../../constants/ActionTypes'
 import { signin, signup } from '../../actions/AuthAction'
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
@@ -68,7 +70,7 @@ export default function Auth() {
                         { isSignup ? 'Sign Up' : 'Sign In' }
                     </Button>
                     <GoogleLogin
-                        clientId={window.env.GOOGLE_ID}
+                        clientId="156954969625-t0037gj1uq8usc5demo0ujj8kuntnhqa.apps.googleusercontent.com"/*{window.env.GOOGLE_ID}*/
                         render={(renderProps) => (
                         <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
                             Sign in with Google 
@@ -78,8 +80,8 @@ export default function Auth() {
                         onFailure={googleError}
                         cookiePolicy="single_host_origin"
                     />
-                    {console.log(window.env.DOTENV)}
-                    <Grid container justify="flex-end">
+                    {/* {console.log(window.env.DOTENV)} */}
+                    <Grid container justifyContent="flex-end">
                         <Grid item>
                         <Button onClick={switchMode}>
                             { isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign Up" }

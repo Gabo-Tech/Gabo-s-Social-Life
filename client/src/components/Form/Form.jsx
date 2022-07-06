@@ -8,7 +8,7 @@ import { createPost, updatePost } from '../../actions/PostAction';
 
 export default function Form({ currentId, setCurrentId }){
   const [postData, setPostData] = useState({ title: '', message: '', tags: '', selectedFile: '' });
-  const post = useSelector((state) => (currentId ? state.posts.posts.find((message) => message._id === currentId) : null));
+  const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) /*console.log("THIS IS POSTS STATE ERROR:", JSON.stringify(state.posts))*/ : null));
   const dispatch = useDispatch();
   const classes = useStyles();
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -25,7 +25,7 @@ export default function Form({ currentId, setCurrentId }){
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (currentId === 0 || currentId === null || currentId == undefined) {
+    if (currentId === 0 || currentId === null || currentId === undefined) {
       dispatch(createPost({ ...postData, name: user?.result?.name }, history));
     } else {
       dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));

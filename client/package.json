@@ -1,5 +1,5 @@
 {
-  "name": "mern-stack-client",
+  "name": "gabo-social-life",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:1620",
@@ -11,7 +11,9 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.27.2",
+    "eslint": "^8.19.0",
     "jwt-decode": "^3.1.2",
+    "material-ui-chip-input": "^1.1.0",
     "moment": "^2.27.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -51,13 +53,15 @@
     "@redux-devtools/dock-monitor": "^1.4.0",
     "@redux-devtools/log-monitor": "^2.3.0",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0"
   },
   "react-dotenv": {
-    "whitelist": ["GOOGLE_ID","DOTENV"]
+    "whitelist": [
+      "GOOGLE_ID",
+      "DOTENV"
+    ]
   }
 }
