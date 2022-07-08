@@ -6,6 +6,7 @@ import { deepPurple } from '@material-ui/core/colors';
 export default makeStyles((theme) => ({
   appBar: {
     borderRadius: 15,
+    backgroundColor: '#444',
     margin: '30px 0',
     display: 'flex',
     flexDirection: 'row',
@@ -17,7 +18,7 @@ export default makeStyles((theme) => ({
     },
   },
   heading: {
-    color: theme.palette.primary.main,
+    color: '#fff',/*theme.palette.primary.main,*/
     textDecoration: 'none',
     fontSize: '2em',
     fontWeight: 300,

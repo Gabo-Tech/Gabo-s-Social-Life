@@ -7,26 +7,18 @@ import { GoogleLogin } from 'react-google-login'
 import useStyles from './AuthStyles'
 import Input from './Input'
 import Icon from './Icon'
-import env from "react-dotenv"
-import { AUTH } from '../../constants/ActionTypes'
+// import env from "react-dotenv"
+import { AUTH } from '../../constants/ActionTypes.js'
 import { signin, signup } from '../../actions/AuthAction'
 
-const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmedPassword: '' };
 
-export default function Auth() {
+export default function SignUp() {
     const dispatch = useDispatch();
     const history = useHistory();
     const classes = useStyles();
     const [form, setForm] = useState(initialState);
     const [isSignup, setIsSignup] = useState(false);
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (isSignup) {
-          dispatch(signup(form, history));
-        } else {
-          dispatch(signin(form, history));
-        }
-    };
     const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
     const [showPassword, setShowPassword] = useState(false);
     const handleShowPassword = () => setShowPassword(!showPassword);
@@ -34,6 +26,14 @@ export default function Auth() {
         setForm(initialState);
         setIsSignup((prevIsSignup) => !prevIsSignup);
         setShowPassword(false);
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (isSignup) {
+          dispatch(signup(form, history));
+        } else {
+          dispatch(signin(form, history));
+        }
     };
     const googleSuccess = async (res) => {
         const result = res?.profileObj;
@@ -64,7 +64,7 @@ export default function Auth() {
                         )}
                         <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
                         <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
-                        { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" /> }
+                        { isSignup && <Input name="confirmedPassword" label="Repeat Password" handleChange={handleChange} type="password" /> }
                     </Grid>
                     <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                         { isSignup ? 'Sign Up' : 'Sign In' }
@@ -73,13 +73,14 @@ export default function Auth() {
                         clientId="156954969625-t0037gj1uq8usc5demo0ujj8kuntnhqa.apps.googleusercontent.com"/*{window.env.GOOGLE_ID}*/
                         render={(renderProps) => (
                         <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
-                            Sign in with Google 
+                            { isSignup ? 'Sign up with Google' : 'Sign in with Google' }
                         </Button>
                         )}
                         onSuccess={googleSuccess}
                         onFailure={googleError}
                         cookiePolicy="single_host_origin"
                     />
+                    {/* {console.log(env.DOTENV)} */}
                     {/* {console.log(window.env.DOTENV)} */}
                     <Grid container justifyContent="flex-end">
                         <Grid item>

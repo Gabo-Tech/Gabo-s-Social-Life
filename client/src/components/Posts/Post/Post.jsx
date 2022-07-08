@@ -52,7 +52,7 @@ export default function Post({ post, setCurrentId }){
         {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
           <div className={classes.overlay2} name="edit">
             <Button onClick={(e) => {e.stopPropagation(); setCurrentId(post._id);}}style={{ color: 'white' }} size="small">
-              <MoreHorizIcon fontSize="default" />
+              <MoreHorizIcon fontSize="medium" />
             </Button>
           </div>
         )}
@@ -70,8 +70,7 @@ export default function Post({ post, setCurrentId }){
         </Button>
         {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
           <Button size="small" color="secondary" onClick={() => dispatch(deletePost(post._id))}>
-            <DeleteIcon fontSize="small" /> &nbsp; Delete
-          </Button>
+            <DeleteIcon fontSize="small" /> &nbsp;</Button>
         )}
       </CardActions>
     </Card>

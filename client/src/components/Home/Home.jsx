@@ -16,7 +16,7 @@ function useQuery() {
 }
 
 export default function Home() {
-    const [currentId, setCurrentId] = useState(20);  
+    const [currentId, setCurrentId] = useState(0);  
     const classes = useStyles();
     //DEFINE REDUX DISPATCH
     const dispatch = useDispatch();//DISPATCH ON useEffect
@@ -30,7 +30,7 @@ export default function Home() {
     const searchPost = () => {
       if (search.trim() || tags) {
         dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
-        history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
+        history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',').join(' ')}`);
       } else {
         history.push('/');
       }
@@ -67,5 +67,5 @@ export default function Home() {
       </Container>
     </Grow>
     </>
-  )
-}
+  );
+};

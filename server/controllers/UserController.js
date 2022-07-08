@@ -29,9 +29,9 @@ export const signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 12);
     const result = await User.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` });
     const token = jwt.sign( { email: result.email, id: result._id }, secret, { expiresIn: "48h" } );
-    res.status(201).json({ result, token });
+    return res.status(201).json({ result, token });
   } catch (err) {
-    res.status(500).json({ message: "Something went wrong" });
     console.error(err);
+    return res.status(500).json({ message: "Something went wrong" });
   }
 };

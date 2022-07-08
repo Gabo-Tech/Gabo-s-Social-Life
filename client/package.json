@@ -2,7 +2,7 @@
   "name": "gabo-social-life",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:1620",
+  "proxy": "http://127.0.0.1:1620",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.9.1",
@@ -56,7 +56,8 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "spinners": "^1.2.2"
   },
   "react-dotenv": {
     "whitelist": [

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Post from '../Posts/Post/Post';
 import { getPostsByCreator, getPostsBySearch } from '../../actions/PostAction';
 
-const CreatorOrTag = () => {
+export default function CreatorOrTag(){
   const { name } = useParams();
   const dispatch = useDispatch();
   const { posts, isLoading } = useSelector((state) => state.posts);
@@ -35,5 +35,3 @@ const CreatorOrTag = () => {
     </div>
   );
 };
-
-export default CreatorOrTag;
