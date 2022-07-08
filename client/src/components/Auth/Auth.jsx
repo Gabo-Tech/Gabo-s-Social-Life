@@ -19,7 +19,6 @@ export default function SignUp() {
     const classes = useStyles();
     const [form, setForm] = useState(initialState);
     const [isSignup, setIsSignup] = useState(false);
-    const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
     const [showPassword, setShowPassword] = useState(false);
     const handleShowPassword = () => setShowPassword(!showPassword);
     const switchMode = () => {
@@ -30,22 +29,23 @@ export default function SignUp() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (isSignup) {
-          dispatch(signup(form, history));
+            dispatch(signup(form, history));
         } else {
-          dispatch(signin(form, history));
+            dispatch(signin(form, history));
         }
     };
     const googleSuccess = async (res) => {
         const result = res?.profileObj;
         const token = res?.tokenId;
         try {
-          dispatch({ type: AUTH, data: { result, token } });
-          history.push('/');
+            dispatch({ type: AUTH, data: { result, token } });
+            history.push('/');
         } catch (err) {
-          console.error("Error with Google Sign In: ",err);
+            console.error("Error with Google Sign In: ",err);
         }
     };
     const googleError = (err) => console.error('Google Sign In was unsuccessful because of this error: ', err);
+    const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   return (
     <>
         <Container component="main" maxWidth="xs">
