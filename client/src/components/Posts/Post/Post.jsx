@@ -17,7 +17,8 @@ export default function Post({ post, setCurrentId }){
   const user = JSON.parse(localStorage.getItem('profile'));
   const userId = user?.result.googleId || user?.result?._id;
   const [likes, setLikes] = useState(post?.likes);
-  const hasLikedPost = post.likes.find((like) => like === userId);
+  console.log("THIS IS POST likes: ",JSON.stringify(post.likes));
+  const hasLikedPost = post?.likes?.find((like) => like === userId);
   const handleLike = async () => {
     dispatch(likePost(post._id));
     if (hasLikedPost) {
@@ -51,7 +52,7 @@ export default function Post({ post, setCurrentId }){
         </div>
         {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
           <div className={classes.overlay2} name="edit">
-            <Button onClick={(e) => {e.stopPropagation(); setCurrentId(post._id);}}style={{ color: 'white' }} size="small">
+            <Button onClick={(e) => {e.stopPropagation(); setCurrentId(post._id ?? 0);}}style={{ color: 'white' }} size="small">
               <MoreHorizIcon fontSize="medium" />
             </Button>
           </div>

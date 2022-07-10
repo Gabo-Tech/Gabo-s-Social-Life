@@ -7,6 +7,7 @@ import Post from '../Posts/Post/Post';
 import { getPostsByCreator, getPostsBySearch } from '../../actions/PostAction';
 
 export default function CreatorOrTag(){
+  const user = JSON.parse(localStorage.getItem('profile'));
   const { name } = useParams();
   const dispatch = useDispatch();
   const { posts, isLoading } = useSelector((state) => state.posts);
@@ -22,6 +23,7 @@ export default function CreatorOrTag(){
   return (
     <div>
       <Typography variant="h2">{name}</Typography>
+      <Typography variant="h3">{user.result.email}</Typography>
       <Divider style={{ margin: '20px 0 50px 0' }} />
       {isLoading ? <CircularProgress /> : (
         <Grid container alignItems="stretch" spacing={3}>
