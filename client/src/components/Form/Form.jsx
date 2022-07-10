@@ -52,7 +52,7 @@ export default function Form({ currentId, setCurrentId }){
   };
 
   return (
-    <Paper className={classes.paper} elevation={6}>
+    <Paper className={classes.paper} style={{ filter: `invert('100%')` }} elevation={6}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
         <Typography variant="h6">{currentId ?`Editing "${post?.title}"` :'You wanna write a post?' }</Typography>
         <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
@@ -62,7 +62,7 @@ export default function Form({ currentId, setCurrentId }){
         </div>
         <div className={classes.fileInput}><FileBase type="file" multiple={false} onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })} /></div>
         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-        <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+        <Button className={classes.buttonClear} variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
       </form>
     </Paper>
   );

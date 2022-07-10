@@ -14,7 +14,7 @@ export default makeStyles({
     height: '100%',
   },
   card: {
-    
+    backgroundColor: 'rgba(0,0,0)',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -54,4 +54,8 @@ export default makeStyles({
     display: 'block',
     textAlign: 'initial',
   },
+  dark: {
+    backgroundColor: 'rgba(0,0,0)',
+    color: 'white'
+  }
 });

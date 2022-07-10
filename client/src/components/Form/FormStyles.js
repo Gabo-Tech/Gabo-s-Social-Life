@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { batch } from 'react-redux';
 
 export default makeStyles((theme) => ({
   root: {
@@ -8,6 +9,7 @@ export default makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(2),
+    filter: 'invert(100%)'
   },
   form: {
     display: 'flex',
@@ -20,5 +22,12 @@ export default makeStyles((theme) => ({
   },
   buttonSubmit: {
     marginBottom: 10,
+    backgroundColor:'#c0ae4a',
+    color:'#000'
   },
+  buttonClear: {
+    marginBottom: 10,
+    backgroundColor:'#0affa8',
+    color:'#000'
+  }
 }));

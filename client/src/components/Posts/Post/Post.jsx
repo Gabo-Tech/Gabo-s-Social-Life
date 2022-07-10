@@ -57,23 +57,27 @@ export default function Post({ post, setCurrentId }){
             </Button>
           </div>
         )}
-        <div className={classes.details}>
-          <Typography variant="body2" color="textSecondary" component="h2">{post.tags.map((tag) => `#${tag} `)}</Typography>
+        <div className={classes.dark}>
+            <div className={classes.details}>
+              <Typography variant="body2" color="#fff" component="h2">{post.tags.map((tag) => `#${tag} `)}</Typography>
+            </div>
+            <Typography className={classes.title} gutterBottom variant="h5" component="h2">{post.title}</Typography>
+            <CardContent>
+              <Typography variant="body2" color="#fff" component="p">{post.message}</Typography>
+            </CardContent>
         </div>
-        <Typography className={classes.title} gutterBottom variant="h5" component="h2">{post.title}</Typography>
-        <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">{post.message}</Typography>
-        </CardContent>
-      </ButtonBase>
-      <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary" disabled={!user?.result} onClick={handleLike}>
-          <Likes />
-        </Button>
-        {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
-          <Button size="small" color="secondary" onClick={() => dispatch(deletePost(post._id))}>
-            <DeleteIcon fontSize="small" /> &nbsp;</Button>
-        )}
-      </CardActions>
+          </ButtonBase>
+        <div className={classes.dark}>
+          <CardActions className={classes.cardActions}>
+            <Button size="small" color="primary" disabled={!user?.result} onClick={handleLike}>
+              <Likes />
+            </Button>
+            {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
+              <Button size="small" color="secondary" onClick={() => dispatch(deletePost(post._id))}>
+                <DeleteIcon fontSize="small" /> &nbsp;</Button>
+            )}
+          </CardActions>
+        </div>
     </Card>
   );
 };

@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { Typography, CircularProgress, Grid, Divider } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-
 import Post from '../Posts/Post/Post';
 import { getPostsByCreator, getPostsBySearch } from '../../actions/PostAction';
+import useStyles from './CreatorOrTagStyles';
 
 export default function CreatorOrTag(){
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -12,6 +12,7 @@ export default function CreatorOrTag(){
   const dispatch = useDispatch();
   const { posts, isLoading } = useSelector((state) => state.posts);
   const location = useLocation();
+  const classes = useStyles();
   useEffect(() => {
     if (location.pathname.startsWith('/tags')) {
       dispatch(getPostsBySearch({ tags: name }));
@@ -22,8 +23,8 @@ export default function CreatorOrTag(){
   if (!posts.length && !isLoading) return 'No posts';
   return (
     <div>
-      <Typography variant="h2">{name}</Typography>
-      <Typography variant="h3">{user.result.email}</Typography>
+      <Typography className={classes.text} variant="h2">{!location.pathname.startsWith('/tags') ?  name : `#${name}`}</Typography>
+      {!location.pathname.startsWith('/tags') ?  (<Typography className={classes.text} variant="h3">{user.result.email}</Typography>) : null}
       <Divider style={{ margin: '20px 0 50px 0' }} />
       {isLoading ? <CircularProgress /> : (
         <Grid container alignItems="stretch" spacing={3}>

@@ -50,4 +50,7 @@ export default makeStyles((theme) => ({
     overflowY: 'auto',
     marginRight: '30px',
   },
+  invert:{
+    filter: 'invert(100%)'
+  }
 }));
