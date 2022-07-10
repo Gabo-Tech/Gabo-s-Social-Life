@@ -30,7 +30,7 @@ export default function PostDetails(){
 
   if (isLoading) {
     return (
-      <Paper elevation={6} className={classes.loadingPaper, classes.invert}>
+      <Paper elevation={6} className={classes.loadingPaper && classes.invert}>
         <CircularProgress size="7em" />
       </Paper>
     );
@@ -64,7 +64,7 @@ export default function PostDetails(){
           <Divider style={{ margin: '20px 0' }} />
         </div>
         <div className={classes.imageSection}>
-          <img className={classes.media, classes.invert} src={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} alt={post.title} />
+          <img className={classes.media && classes.invert} src={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} alt={post.title} />
         </div>
       </div>
       {!!recommendedPosts.length && (
