@@ -25,7 +25,6 @@ export default function Form({ currentId, setCurrentId }){
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("This is current id inside handle submit: ",currentId);
     if (currentId) {
       dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
     } else {

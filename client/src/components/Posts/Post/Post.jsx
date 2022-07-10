@@ -17,7 +17,6 @@ export default function Post({ post, setCurrentId }){
   const user = JSON.parse(localStorage.getItem('profile'));
   const userId = user?.result.googleId || user?.result?._id;
   const [likes, setLikes] = useState(post?.likes);
-  console.log("THIS IS POST likes: ",JSON.stringify(post.likes));
   const hasLikedPost = post?.likes?.find((like) => like === userId);
   const handleLike = async () => {
     dispatch(likePost(post._id));
