@@ -80,8 +80,9 @@ export default function SignUp() {
                         onFailure={googleError}
                         cookiePolicy="single_host_origin"
                     />
-                    {/* {console.log(env.DOTENV)} */}
-                    {/* {console.log(window.env.DOTENV)} */}
+                    {/* {console.log("1",process.env.REACT_APP_DOTENV)} */}
+                    {/* {console.log("2",env.REACT_APP_DOTENV)} */}
+                    {/* {console.log("3",window.env.REACT_APP_DOTENV)} */}
                     <Grid container justifyContent="flex-end">
                         <Grid item>
                         <Button onClick={switchMode}>
