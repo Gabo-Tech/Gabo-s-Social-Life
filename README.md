@@ -1,4 +1,4 @@
-# Gabo-s-Social-Life
+# Gabo's Social Life
 
 ![Web Mockup](Mockup.png) 
 
