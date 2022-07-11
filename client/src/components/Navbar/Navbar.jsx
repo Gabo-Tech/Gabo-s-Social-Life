@@ -42,7 +42,7 @@ export default function Navbar() {
                     </div>
                 ) : (
                     
-                    <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
+                    <Button id="signinBTN" component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
                 )}
             </Toolbar>
         </AppBar>
