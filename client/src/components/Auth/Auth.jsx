@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core'
+// import jwt_deocde from "jwt-decode"
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import { useHistory } from 'react-router-dom'
-import { GoogleLogin } from 'react-google-login'
+// import { GoogleLogin } from 'react-google-login'
 import useStyles from './AuthStyles'
 import Input from './Input'
-import Icon from './Icon'
-// import env from "react-dotenv"
-import { AUTH } from '../../constants/ActionTypes.js'
+// import Icon from './Icon'
+// import { AUTH } from '../../constants/ActionTypes.js'
 import { signin, signup } from '../../actions/AuthAction'
+// import { useScript } from '../../hooks/useScript'
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmedPassword: '' };
 
@@ -34,18 +35,44 @@ export default function SignUp() {
             dispatch(signin(form, history));
         }
     };
-    const googleSuccess = async (res) => {
-        const result = res?.profileObj;
-        const token = res?.tokenId;
-        try {
-            dispatch({ type: AUTH, data: { result, token } });
-            history.push('/');
-        } catch (err) {
-            console.error("Error with Google Sign In: ",err);
-        }
-    };
-    const googleError = (err) => console.error('Google Sign In was unsuccessful because of this error: ', err);
+    // const googleSuccess = async (res) => {
+    //     const result = res?.profileObj;
+    //     const token = res?.tokenId;
+    //     try {
+    //         dispatch({ type: AUTH, data: { result, token } });
+    //         history.push('/');
+    //     } catch (err) {
+    //         console.error("Error with Google Sign In: ",err);
+    //     }
+    // };
+    // const googleError = (err) => console.error('Google Sign In was unsuccessful because of this error: ', err);
     const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+
+    // const googlebuttonref = useRef();
+    // const [user, setuser] = useState(false);
+    // const onGoogleSignIn = (user) => {
+    //   let userCred = user.credential;
+    //   let payload = jwt_deocde(userCred);
+    //   console.log(payload);
+    //   setuser(payload);
+    // };
+    // useScript("https://accounts.google.com/gsi/client", () => {
+    //   window.google.accounts.id.initialize({
+    //     client_id: process.env.REACT_APP_GOOGLE_ID,
+    //     callback: onGoogleSignIn,
+    //     auto_select: false,
+    //   });
+  
+    //   window.google.accounts.id.renderButton(googlebuttonref.current, {
+    //     size: "medium",
+    //   });
+    // });
+
+
+
+
+
   return (
     <>
         <Container component="main" maxWidth="xs">
@@ -69,8 +96,8 @@ export default function SignUp() {
                     <Button id="submitFormBtn" type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                         { isSignup ? 'Sign Up' : 'Sign In' }
                     </Button>
-                    <GoogleLogin
-                        clientId="156954969625-t0037gj1uq8usc5demo0ujj8kuntnhqa.apps.googleusercontent.com"/*{window.env.GOOGLE_ID}*/
+                    {/* <GoogleLogin 
+                        clientId={process.env.REACT_APP_GOOGLE_ID}
                         render={(renderProps) => (
                         <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
                             { isSignup ? 'Sign up with Google' : 'Sign in with Google' }
@@ -79,10 +106,23 @@ export default function SignUp() {
                         onSuccess={googleSuccess}
                         onFailure={googleError}
                         cookiePolicy="single_host_origin"
-                    />
-                    {/* {console.log("1",process.env.REACT_APP_DOTENV)} */}
-                    {/* {console.log("2",env.REACT_APP_DOTENV)} */}
-                    {/* {console.log("3",window.env.REACT_APP_DOTENV)} */}
+                    /> */}
+                    {/* {!user && <div ref={googlebuttonref}></div>}
+                        {user && (
+                            <div>
+                            <h1>{user.name}</h1>
+                            <img src={user.picture} alt="profile" />
+                            <p>{user.email}</p>
+
+                            <button
+                                onClick={() => {
+                                setuser(false);
+                                }}
+                            >
+                                Logout
+                            </button>
+                            </div>
+                        )} */}
                     <Grid container justifyContent="flex-end">
                         <Grid item>
                         <Button onClick={switchMode}>
