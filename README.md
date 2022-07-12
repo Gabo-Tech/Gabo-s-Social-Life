@@ -7,7 +7,7 @@ Well, this is just a fully open sourced social media site made with the MERN sta
 
 ## Getting Started
 
-Well, just visit the website at [gabosl.es](), sign up and enjoy! 
+Well, just visit the website at [gabosl.com](https://www.gabosl.com/posts), sign up and enjoy! 
 
 ### You want to own this website?
 
