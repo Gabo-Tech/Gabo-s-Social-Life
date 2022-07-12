@@ -5,6 +5,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
 import userRoutes from './routes/users.js';
+import swaggerUI from 'swagger-ui-express';
+import docs from"./docs/index.js";
 
 const app = express();
 dotenv.config();
@@ -12,6 +14,7 @@ const PORT = process.env.PORT || 1620;
 
 app.use(bodyParser.json({ limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(docs));
 
 app.use(cors());
 app.use('/posts', postRoutes);
