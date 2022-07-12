@@ -31,6 +31,11 @@ This website it's been deployed and made available to the public thanks to [Verc
 - [Material UI](https://mui.com/) - Move faster with intuitive React UI tools.
 - [Swagger](https://swagger.io/) - API Development for Everyone
 
+
+## Api documentation made with Swagger
+
+[Here is the API documentation.](https://gabosocialifewithswagger.herokuapp.com/api-docs/)  
+
 ## Contributing
 
   Like, share, subscribe, follow and join my Patreon! Just kidding this is totally for free. 
