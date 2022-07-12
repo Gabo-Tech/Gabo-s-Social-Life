@@ -1,6 +1,6 @@
 # Gabo's Social Life
 
-![Web Mockup](animation.gif) 
+![Web Mockup](client/public/animation.gif) 
 
 
 Well, this is just a fully open sourced social media site made with the MERN stack.
