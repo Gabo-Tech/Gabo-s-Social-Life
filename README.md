@@ -11,7 +11,7 @@ Well, just visit the website at [gabosl.com](https://www.gabosl.com/posts), sign
 
 ### You want to own this website?
 
-On the other hand if you'd like to host this website on your local machine just clone this repository with ``` git clone https://github.com/Gabo-Tech/Instagram-Clone-by-Gabriel-Clemente.git```. just copy and paste that command on your terminal, then write ```npm init && npm install```  to install all dependencies, and start a local server with ```npm run dev```. That's it.
+On the other hand if you'd like to host this website on your local machine just clone this repository with ``` git clone https://github.com/Gabo-Tech/Gabo-s-Social-Life.git```. just copy and paste that command on your terminal, then write ```npm init && npm install```  to install all dependencies, and start a local servers with ```npm run dev```. That's it.
 
 ## Deployment
 
