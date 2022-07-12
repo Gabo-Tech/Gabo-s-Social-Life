@@ -5,6 +5,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
 import userRoutes from './routes/users.js';
+import swaggerUI from 'swagger-ui-express';
+import docs from"./docs/index.js";
 
 const app = express();
 dotenv.config();
@@ -16,6 +18,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
 app.use('/posts', postRoutes);
 app.use('/user', userRoutes);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(docs));
 
 mongoose.connect(process.env.CONNECT_DATABASE).then(() => app.listen(PORT, () => (console.info(`Succesfully connected to the database...`),console.info(`Server running on port: ${PORT}...`))))
     .catch((err) => console.error("THIS IS THE DATABASE CONNECTION ERROR:",err.message));
