@@ -28,6 +28,7 @@ This website it's been deployed and made available to the public thanks to [Verc
 - [Cypress](https://www.cypress.io/) - The web has evolved. Finally, testing has too.
 - [Express](https://expressjs.com/) - Always fast and simple.
 - [Node](https://nodejs.org/) - A JavaScript runtime built on Chrome's V8 JavaScript engine.
+- [Material UI](https://mui.com/) - Move faster with intuitive React UI tools.
 
 ## Contributing
 
