@@ -24,7 +24,7 @@ export default function CreatorOrTag(){
   return (
     <div>
       <Typography className={classes.text} variant="h2">{!location.pathname.startsWith('/tags') ?  name : `#${name}`}</Typography>
-      {!location.pathname.startsWith('/tags') ?  (<Typography className={classes.text} variant="h3">{user.result.email}</Typography>) : null}
+      {!location.pathname.startsWith('/tags') ?  (<Typography className={classes.text} variant="h3">{name === user.result.name ? user.result.email : null}</Typography>) : null}
       <Divider style={{ margin: '20px 0 50px 0' }} />
       {isLoading ? <CircularProgress /> : (
         <Grid container alignItems="stretch" spacing={3}>
