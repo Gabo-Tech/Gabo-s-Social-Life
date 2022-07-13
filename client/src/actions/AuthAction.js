@@ -7,7 +7,7 @@ export const signin = (formData, router) => async (dispatch) => {
     dispatch({ type: AUTH, data });
     router.push('/');
   } catch (err) {
-    console.error("THIS IS THE SIGNIN ERROR", err);
+    console.error("THIS IS THE SIGNIN ERROR", err.response.data.message, err);
   }
 };
 
